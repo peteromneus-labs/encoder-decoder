@@ -6,38 +6,21 @@ namespace encoder_decoder.Classes
     {
         public static string Encode(string encoderInput)
         {
-            string encoded = string.Empty;
+            string encoded = string.Empty; // initialiserar encoded med ett tomt värde
 
-            foreach (char character in encoderInput)
+            foreach (char character in encoderInput) // loopar igenom varje tecken (char) i stringen encoderInput
             {
-                switch (char.ToUpper(character))
+                encoded += char.ToUpper(character) switch // byter ut valda tecken och hoppar över resten // se klassen MessageDecoder för en alternativ lösning
                 {
-                    default:
-                        encoded += character;
-                        break;
-
-                    case 'A':
-                        encoded += '@';
-                        break;
-
-                    case 'E':
-                        encoded += '3';
-                        break;
-
-                    case 'I':
-                        encoded += '!';
-                        break;
-
-                    case 'O':
-                        encoded += '0';
-                        break;
-
-                    case 'S':
-                        encoded += "$";
-                        break;
-                }
+                    'A' => '@',
+                    'E' => '3',
+                    'I' => '!',
+                    'O' => '0',
+                    'S' => "$",
+                    _ => character,
+                };
             }
-            return encoded;
+            return encoded; // encoded är den string som "lämnar" metoden och blir tillgänglig att använda i huvudprogrammet
         }
     }
 }

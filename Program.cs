@@ -33,8 +33,8 @@ switch (menuChoice) // använder char-variabeln menuChoice för att aktivera rä
     case '1':
         while (true)
         {
-            string encoderInput = InputHelper.InputValidation("What's your message? "); // 
-            string encoded = MessageEncoder.Encode(encoderInput);
+            string encoderInput = InputHelper.InputValidation("What's your message? "); // kallar in metoden InputValidation för att hantera eventuell felaktig input
+            string encoded = MessageEncoder.Encode(encoderInput); // metoden Encode hanterar själva chiffreringen
 
             Console.WriteLine($"Here's your encoded message: {encoded}\n");
             break;
@@ -42,7 +42,7 @@ switch (menuChoice) // använder char-variabeln menuChoice för att aktivera rä
         break;
 
     case '2':
-        while (true)
+        while (true) // case 2 fungerar likadant som case 1, men använder Decode för att dechiffrera istället
         {
             string decoderInput = InputHelper.InputValidation("What's your message? ");
             string decoded = MessageDecoder.Decode(decoderInput);
@@ -52,7 +52,7 @@ switch (menuChoice) // använder char-variabeln menuChoice för att aktivera rä
         }
         break;
 
-    case '3':
+    case '3': // case 3 avslutar programmet
         Console.Clear();
         Console.WriteLine("Exiting program...");
         Console.ReadKey();

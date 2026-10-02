@@ -1,0 +1,63 @@
+schema_version = 1
+
+[project]
+name = "encoder-decoder"
+
+[sandbox]
+image = "PASTE_THE_DOCKER_REPODIGEST_HERE"
+
+[commands.install]
+program = "dotnet"
+args = [
+    "restore",
+    "EncoderDecoder.Tests/EncoderDecoder.Tests.csproj"
+]
+timeout_seconds = 300
+
+[commands.build]
+program = "dotnet"
+args = [
+    "build",
+    "EncoderDecoder.Tests/EncoderDecoder.Tests.csproj",
+    "--no-restore"
+]
+timeout_seconds = 300
+
+[commands.test]
+program = "dotnet"
+args = [
+    "test",
+    "EncoderDecoder.Tests/EncoderDecoder.Tests.csproj",
+    "--no-build",
+    "--no-restore"
+]
+timeout_seconds = 600
+
+[environment]
+DOTNET_CLI_TELEMETRY_OPTOUT = "1"
+DOTNET_NOLOGO = "1"
+
+[permissions]
+writable_paths = [
+    "Program.cs",
+    "Classes/**",
+    "EncoderDecoder.Tests/**/*.cs",
+    "README.md"
+]
+
+protected_paths = [
+    ".orchestrator/**",
+    ".github/workflows/**"
+]
+
+private_paths = []
+
+[dependencies]
+inputs = [
+    "encoder-decoder.csproj",
+    "EncoderDecoder.Tests/EncoderDecoder.Tests.csproj"
+]
+
+[limits]
+max_changed_lines = 500
+max_changed_files = 20
