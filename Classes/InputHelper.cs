@@ -11,16 +11,16 @@ namespace encoder_decoder.Classes
                 Console.Write(text);
                 string? input = Console.ReadLine();
 
-                if (!string.IsNullOrWhiteSpace(input))
+                if (!string.IsNullOrWhiteSpace(input)) // lägg märke till operatorn ! innan string som betyder INTE
                 {
                     return input;
                 }
 
-                ErrorMessage("Try again!");
+                ErrorMessage("Invalid input. Try again.");
             }
         }
 
-        public static void ErrorMessage(string text)
+        public static void ErrorMessage(string text) // generiskt felmeddelande med färgformatering
         {
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine(text);
